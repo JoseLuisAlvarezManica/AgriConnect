@@ -1,3 +1,6 @@
+using AgriConnect.Web.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AgriConnect.Web
 {
     public class Program
@@ -8,6 +11,7 @@ namespace AgriConnect.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<DataContext>(x=>x.UseSqlServer("name=con"));
 
             var app = builder.Build();
 
