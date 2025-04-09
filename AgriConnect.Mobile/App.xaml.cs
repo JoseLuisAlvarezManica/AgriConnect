@@ -22,9 +22,11 @@ namespace AgriConnect.Mobile
             //Viewmodels
             services.AddTransient<ViewModelTest>();
             services.AddTransient<ColaboradoresViewModel>();
+            services.AddTransient<ColaboradorViewModel>();
 
             //View
             services.AddSingleton<ListadoColaboradores>();
+            services.AddSingleton<Colaborador>();
 
             return services.BuildServiceProvider();
         }

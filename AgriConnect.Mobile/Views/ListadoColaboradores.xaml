@@ -4,16 +4,14 @@
              x:Class="AgriConnect.Mobile.Views.ListadoColaboradores"
              xmlns:vm="clr-namespace:AgriConnect.Mobile.ViewModel"
              xmlns:mo="clr-namespace:AgriConnect.Mobile.Models"
+             xmlns:te="clr-namespace:AgriConnect.Mobile.Views.Templates"
              Title="ListadoColaboradores">
     <VerticalStackLayout x:DataType="vm:ColaboradoresViewModel">
         <Button Command="{Binding ListarColaboradoresCommand}" Text="Listar colaboradores"/>
         <CollectionView ItemsSource="{Binding Colaboradores}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="mo:ColaboradoresModels">
-                    <HorizontalStackLayout Padding="10" BackgroundColor="Blue">
-                        <Label Text="{Binding Nombre}" Padding="20"/>
-                        <Label Text="{Binding Apellidos}" Padding="20"/>
-                    </HorizontalStackLayout>
+                <DataTemplate>
+                    <te:ItemsColaboradores />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
