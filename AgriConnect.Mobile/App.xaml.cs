@@ -1,12 +1,32 @@
-﻿namespace AgriConnect.Mobile
+﻿using AgriConnect.Mobile.ViewModel;
+
+namespace AgriConnect.Mobile
 {
     public partial class App : Application
     {
+        public new static App Current => (App)Application.Current;
+        public IServiceProvider Services { get;}
         public App()
         {
+            var services = new ServiceCollection();
+            Services = ConfigureServices(services);
             InitializeComponent();
+            //MainPage = new NavigationPage(new Pages.LoginPage());
 
             MainPage = new AppShell();
+        }
+        private static IServiceProvider ConfigureServices(ServiceCollection services)
+        {   
+            //Servicios
+            services.AddSingleton<IFunctions, Functions>();
+            //Viewmodels
+            services.AddTransient<ViewModelTest>();
+            services.AddTransient<ColaboradoresViewModel>();
+
+            //View
+            services.AddSingleton<ListadoColaboradores>();
+
+            return services.BuildServiceProvider();
         }
     }
 }
